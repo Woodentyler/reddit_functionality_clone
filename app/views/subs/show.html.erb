@@ -1,0 +1,16 @@
+<h2>View Sub</h2>
+
+Title: <%= @sub.title %> </br>
+Description: <%= @sub.description %>
+
+<%= button_to 'All Subs', subs_url, method: 'get' %>
+
+<h3>Posts</h3>
+
+<% @sub.posts.try(:each) do |post| %>
+
+  <%= button_to "#{post.title}", post_url(post), method: 'get' %>
+
+<% end %>
+<hr>
+<%= button_to 'Add New Post', new_post_url, method:'get' %>

@@ -1,0 +1,13 @@
+<h2>All Subs</h2>
+
+<ul>
+  <% @subs.each do |sub| %>
+    <li>
+        <%= sub.title %>
+        <%= button_to 'Edit Sub', edit_sub_url(sub), method: 'get' %>
+        <%= button_to 'View Sub', sub_url(sub), method: 'get' %>
+    </li>
+  <% end %>
+</ul>
+
+<%= button_to 'Add Sub', new_sub_url, method:'get' %>

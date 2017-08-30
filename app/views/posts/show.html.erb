@@ -1,0 +1,22 @@
+<h2>Show Post</h2>
+
+Title: <%= @post.title %></br>
+URL: <%= @post.url %></br>
+Content: <%= @post.content %></br>
+
+
+<h3>Subs</h3>
+
+<% @post.subs.try(:each) do |sub| %>
+
+  <%= button_to "#{sub.title}", sub_url(sub), method: 'get' %>
+
+<% end %>
+
+<h3>Comments</h3>
+
+<%= button_to 'Add a comment', new_post_comment_url(@post), method: 'get' %>
+
+<ul>
+  <%= render @post.comments.where(parent_comment_id: nil) %>
+</ul>

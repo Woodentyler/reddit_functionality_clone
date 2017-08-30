@@ -1,0 +1,25 @@
+<h3>View Comment</h3>
+
+Content: <%= @comment.content %>
+
+
+<ul>
+<% @comment.child_comments.try(:each) do |comment| %>
+  <li>Comment # <%= comment.id %> : <%= comment.content %></li>
+<% end %>
+</ul>
+
+<form action="<%= comments_url %>" method="post">
+
+  <%= auth_token %>
+
+  <input type="hidden" name="comment[parent_comment_id]" value="<%= @comment.id %>">
+  <input type="hidden" name="comment[post_id]" value="<%= @comment.post_id %>">
+
+  <label for="content">New Comment
+    <input type="text" name="comment[content]"/>
+  </label>
+
+  <input type="submit" value="Post Comment">
+
+</form>

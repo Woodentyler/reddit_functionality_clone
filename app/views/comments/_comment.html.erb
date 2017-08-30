@@ -1,0 +1,6 @@
+<li>
+  <p><%= button_to 'View Comment', comment_url(comment), method: 'get' %> <%= comment.content %></p>
+  <ul>
+    <%= render comment.child_comments %>
+  </ul>
+</li>
